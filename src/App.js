@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React ,{useState, useEffect} from "react";
+import {Route, Switch , Link} from 'react-router-dom'
+import SingleData from "./component/SingleData";
+import Home from './component/Home'
 
 function App() {
+  const [data, setData] = useState([])
+  // const [search, setSearch] = useState('')
+ 
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      
+    <Switch>
+      <Route exact path="/Home" render={(props)=><Home data={data} setData = {setData} {...props} />}/>
+      <Route path="/SingleData" render={(props)=><SingleData data ={data} setData={setData} {...props} />}/>
+    </Switch>
     </div>
   );
 }
